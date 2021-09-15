@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/sanitize.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <title>浪人DIARY</title>
+</head>
+<body>
+  <header id="js-header">
+    <div class="header-inner inner">
+      <div class="header-logo">
+        <img class="header-logo-img is-sp" src="./img/logo.png" alt="浪人ダイアリー">
+        <h1 class="header-logo-title is-pc">浪人DIARY</h1>
+      </div>
+      <ul class="header-menu is-sp">
+        <li class="header-menu-item"><a class="header-menu-item-link" href="#" ><i class="fas fa-pen-fancy fa-3x"></i><p class="header-menu-text">日記を書く</p></a></li>
+        <li class="header-menu-item"><a class="header-menu-item-link" href="#" ><i class="fas fa-search fa-3x"></i><p class="header-menu-text">日記を探す</p></a></li>
+        <li class="header-menu-item"><a class="header-menu-item-link" href="#" ><i class="fas fa-tasks fa-3x"></i><p class="header-menu-text">ユーザー管理</p></a></li>
+        <li class="header-menu-item"><a class="header-menu-item-link" href="#" ><i class="fas fa-user-alt fa-3x"></i><p class="header-menu-text">ログイン</p></a></li>
+      </ul>
+      <div class="drower-icon">
+        <div class="drower-icon-bars">
+          <div class="drower-icon-bar1"></div>
+          <div class="drower-icon-bar2"></div>
+          <div class="drower-icon-bar3"></div>
+        </div>
+      </div>
+      <div class="drower-content">
+        <div class="drower-content-items">
+          <div class="drower-content-item">
+            <a href="#">日記を書く</a>
+          </div>
+          <div class="drower-content-item">
+            <a href="#">日記を探す</a>
+          </div>
+          <div class="drower-content-item">
+            <a href="#">ユーザー管理</a>
+          </div>
+          <div class="drower-content-item">
+            <a href="#">ログイン</a>
+          </div>
+        </div>
+      </div>
+      <div class="drower-background"></div>
+    </div>
+  </header>
+  <main>
+    <div class="main-visual">
+      <div class="main-visual-content">
+        <h2 class="main-visual-title">浪人DIARY</h2>
+        <p class="main-visual-text">「負けたことがある」<br class="is-pc">というのが、<br> いつか大きな財産になる。</p>
+      </div>
+    </div>
+    <section class="search">
+      <div class="inner">
+        <form class="search-form">
+          <table class="search-table">
+            <tbody class="search-box-body">
+              <tr class="search-box-row">
+                <th class="search-box-header">キーワード</th>
+                <td class="search-box-data">
+                  <div class="search-item-container">
+                    <input class="margin-0-auto" type="text" size="25" placeholder="キーワード検索">
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="button-container cond-open-button-container">
+            <input class="button" type="submit" value="条件を追加">
+          </div>
+          <table class="search-table search-add-cond-table">
+            <tbody class="search-box-body">
+              <tr class="search-box-row">
+                <th class="search-box-header">投稿者</th>
+                <td class="search-box-data">
+                  <div class="search-item-container add-search-item-container">
+                    <input class="margin-0-auto" type="text" size="25" placeholder="山田　太郎">
+                  </div>
+                </td>
+              </tr>
+              <tr class="search-box-row">
+                <th class="search-box-header">浪人種別</th>
+                <td class="search-box-data">
+                  <div class="search-item-container add-search-item-container">
+                    <input class="margin-0-auto" type="text" size="25" placeholder="公務員試験">
+                  </div>
+                </td>
+              </tr>
+              <tr class="search-box-row">
+                <th class="search-box-header">投稿期間</th>
+                <td class="search-box-data">
+                  <div class="search-item-container add-search-item-container">
+                    <div class="margin-0-auto">
+                      <label>
+                        <input type="date"/>
+                      </label>
+                      <span>  〜  </span>
+                      <label>
+                        <input type="date"/>
+                      </label>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr class="search-box-row">
+                <th class="search-box-header">いいね数</th>
+                <td class="search-box-data">
+                  <div class="search-item-container add-search-item-container">
+                    <div class="margin-0-auto">
+                      <input type="number" size="25">
+                      <span>  〜  </span>
+                      <input type="number" size="25">
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="button-container search-button-container">
+            <input class="button search-button" type="submit" value="この条件で検索する">
+          </div>
+        </form>
+      </div>
+    </section>
+    <section class="diary">
+      <div class="inner">
+        <div class="result">
+          <div class="count"><span class="count-number">1,000</span>件</div>
+          <div class="sort-select-container">
+            <select required>
+              <option value="">未選択</option>
+              <option value="1">新着順</option>
+              <option value="2">いいねの多い順</option>
+              <option value="3">いいねの少ない順</option>
+            </select>
+          </div>
+        </div>
+        <div class="diary-card" th:each="diary: ${Diarys}">
+          <article>
+          	<a class="article-title" th:href="@{detail(id=${diary.id})}" th:text="${diary.title}"></a>
+            <h3 class="article-tag" th:text="${diary.tag}">#宅浪</h3>
+            <ul class="article-info">
+              <li class="article-info-item"><i class="fas fa-user-alt"></i><span>田中太郎</span></li>
+              <li class="article-info-item"><i class="fas fa-pen"></i><span>大学受験</span></li>
+              <li class="article-info-item"><i class="fas fa-clock"></i><span th:text="${diary.created_at}">2021/9/21</span></li>
+              <li class="article-info-item"><i class="fas fa-thumbs-up"></i><span th:text="${diary.favolite_count}">248</span></li>
+            </ul>
+            <p class="article-text" th:text="${diary.content}">For an extra thick and creamy bowl, add oat bran.  It'll make for a hearty helping and also add more fiber to your meal.  If you love the taste of chai, you'll enjoy this spiced version with coriander, cinnamon, and turmeric.</p>
+          </article>
+        </div>
+        <div class="pagination">
+          <ul class="pagination-list">
+            <li class="pagination-item">
+              <a href="#" class="pagination-link">最初</a>
+            </li>
+            <li class="pagination-item">
+              <a href="#" class="pagination-link">前へ</a>
+            </li>
+            <li class="pagination-item">
+              <a href="#" class="pagination-link displaying">1</a>
+            </li>
+            <li class="pagination-item">
+              <a href="#" class="pagination-link">2</a>
+            </li>
+            <li class="pagination-item is-sp">
+              <a href="#" class="pagination-link">3</a>
+            </li>
+            <li class="pagination-item is-sp">
+              <a href="#" class="pagination-link">4</a>
+            </li>
+            <li class="pagination-item is-sp">
+              <a href="#" class="pagination-link">5</a>
+            </li>
+            <li class="pagination-item">
+              <a href="#" class="pagination-link">...</a>
+            </li>
+            <li class="pagination-item">
+              <a href="#" class="pagination-link">次へ</a>
+            </li>
+            <li class="pagination-item">
+              <a href="#" class="pagination-link">最後</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>© 2021 All rights reserved by higano.</p>
+  </footer>
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="./scripts/index.js"></script>
+</body>
+</html>
