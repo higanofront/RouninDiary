@@ -1,0 +1,1 @@
+package com.rounindiary.RouninDiary.dto;

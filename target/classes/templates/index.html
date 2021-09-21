@@ -65,14 +65,14 @@
                 <th class="search-box-header">キーワード</th>
                 <td class="search-box-data">
                   <div class="search-item-container">
-                    <input class="margin-0-auto" type="text" size="25" placeholder="キーワード検索">
+                    <input class="margin-0-auto" name="keyword" type="text" size="25" placeholder="キーワード検索">
                   </div>
                 </td>
               </tr>
             </tbody>
           </table>
           <div class="button-container cond-open-button-container">
-            <input class="button" type="submit" value="条件を追加">
+            <button class="button">条件を追加</button>
           </div>
           <table class="search-table search-add-cond-table">
             <tbody class="search-box-body">
@@ -80,7 +80,7 @@
                 <th class="search-box-header">投稿者</th>
                 <td class="search-box-data">
                   <div class="search-item-container add-search-item-container">
-                    <input class="margin-0-auto" type="text" size="25" placeholder="山田　太郎">
+                    <input class="margin-0-auto" name="created_by" type="text" size="25" placeholder="山田　太郎">
                   </div>
                 </td>
               </tr>
@@ -88,7 +88,7 @@
                 <th class="search-box-header">浪人種別</th>
                 <td class="search-box-data">
                   <div class="search-item-container add-search-item-container">
-                    <input class="margin-0-auto" type="text" size="25" placeholder="公務員試験">
+                    <input class="margin-0-auto" name="exam_type" type="text" size="25" placeholder="公務員試験">
                   </div>
                 </td>
               </tr>
@@ -98,11 +98,11 @@
                   <div class="search-item-container add-search-item-container">
                     <div class="margin-0-auto">
                       <label>
-                        <input type="date"/>
+                        <input name="created_at-from" type="date"/>
                       </label>
                       <span>  〜  </span>
                       <label>
-                        <input type="date"/>
+                        <input name="created_at-to" type="date"/>
                       </label>
                     </div>
                   </div>
@@ -113,9 +113,9 @@
                 <td class="search-box-data">
                   <div class="search-item-container add-search-item-container">
                     <div class="margin-0-auto">
-                      <input type="number" size="25">
+                      <input name="favolite_count-from" type="number" size="25">
                       <span>  〜  </span>
-                      <input type="number" size="25">
+                      <input name="favolite_count-to" type="number" size="25">
                     </div>
                   </div>
                 </td>
@@ -141,18 +141,20 @@
             </select>
           </div>
         </div>
-        <div class="diary-card" th:each="diary: ${Diarys}">
-          <article>
-          	<a class="article-title" th:href="@{detail(id=${diary.id})}" th:text="${diary.title}"></a>
-            <h3 class="article-tag" th:text="${diary.tag}">#宅浪</h3>
-            <ul class="article-info">
-              <li class="article-info-item"><i class="fas fa-user-alt"></i><span>田中太郎</span></li>
-              <li class="article-info-item"><i class="fas fa-pen"></i><span>大学受験</span></li>
-              <li class="article-info-item"><i class="fas fa-clock"></i><span th:text="${diary.created_at}">2021/9/21</span></li>
-              <li class="article-info-item"><i class="fas fa-thumbs-up"></i><span th:text="${diary.favolite_count}">248</span></li>
-            </ul>
-            <p class="article-text" th:text="${diary.content}">For an extra thick and creamy bowl, add oat bran.  It'll make for a hearty helping and also add more fiber to your meal.  If you love the taste of chai, you'll enjoy this spiced version with coriander, cinnamon, and turmeric.</p>
-          </article>
+        <div class="diary-cards">
+       	  <div class="diary-card" th:each="diary: ${Diarys}">
+		    <article>
+		      <a class="article-title" th:href="@{detail(id=${diary.id})}" th:text="${diary.title}"></a>
+		      <h3 class="article-tag" th:text="${diary.tag}">#宅浪</h3>
+		      <ul class="article-info">
+		        <li class="article-info-item"><i class="fas fa-user-alt"></i><span>田中太郎</span></li>
+		        <li class="article-info-item"><i class="fas fa-pen"></i><span>大学受験</span></li>
+		        <li class="article-info-item"><i class="fas fa-clock"></i><span th:text="${diary.createdAt}">2021/9/21</span></li>
+		        <li class="article-info-item"><i class="fas fa-thumbs-up"></i><span th:text="${diary.favoliteCount}">248</span></li>
+		      </ul>
+		      <p class="article-text" th:text="${diary.content}">For an extra thick and creamy bowl, add oat bran.  It'll make for a hearty helping and also add more fiber to your meal.  If you love the taste of chai, you'll enjoy this spiced version with coriander, cinnamon, and turmeric.</p>
+		    </article>
+		  </div>
         </div>
         <div class="pagination">
           <ul class="pagination-list">
@@ -197,5 +199,8 @@
   <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="./scripts/index.js"></script>
+  <script type="text/javascript">
+	new Index();
+  </script>
 </body>
 </html>

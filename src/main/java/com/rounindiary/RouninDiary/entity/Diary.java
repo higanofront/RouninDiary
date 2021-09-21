@@ -7,10 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name="diary")
 public class Diary {
 
@@ -27,14 +31,21 @@ public class Diary {
 	@Column(name = "tag")
 	private String tag;
 
-	@Column(name = "created_by")
-	private Integer created_by;
+	@Column(name = "user_id")
+	private Integer userId;
 
 	@Column(name = "created_at")
-	private Date created_at;
+	private Date createdAt;
+
+	@Column(name = "created_by")
+	private String createdBy;
 
 	@Column(name = "favolite_count")
-	private Integer favolite_count;
+	private Integer favoliteCount;
+
+	@Column(name = "exam_type")
+	private String examType;
+
 }
 
 
