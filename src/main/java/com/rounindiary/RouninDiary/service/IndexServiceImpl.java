@@ -45,7 +45,6 @@ public class IndexServiceImpl implements IndexService {
 				.and(this.likeCreatedBy(searchForm.getCreatedBy()))
 				.and(this.likeExamType(searchForm.getExamType()))
 				);
-		System.out.println("検索結果" + diarys);
 		diarysDto.setPostsList(diarys);
 		diarysDto.setSearchForm(searchForm);
 

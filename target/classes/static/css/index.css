@@ -260,7 +260,7 @@ main {
 }
 
 .search-add-cond-table {
-  border-top: none;
+  border-top: 3px solid #141E61;
   border-bottom: 3px solid #141E61;
 }
 
@@ -339,21 +339,6 @@ input[type="date"] {
   overflow: hidden;
 }
 
-.cond-open-button-container {
-  border-right: 3px solid #141E61;
-  border-left: 3px solid #141E61;
-}
-
-.button-container {
-  text-align: center;
-  border-top: none;
-  width: 100%;
-  margin: 0 auto;
-  padding: 20px;
-  border-top: 1px solid #e6e6e6;
-  background: #fff;
-}
-
 .button {
   height: 50px;
   width: 240px;
@@ -366,6 +351,21 @@ input[type="date"] {
   outline : none;
   display: inline-block;
   vertical-align: middle;
+}
+
+.button-container {
+  text-align: center;
+  border-top: none;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border-top: 1px solid #e6e6e6;
+  background: #fff;
+}
+
+.cond-open-button-container {
+  border-right: 3px solid #141E61;
+  border-left: 3px solid #141E61;
 }
 
 .add-search-item-container {
@@ -614,7 +614,7 @@ footer p {
 /* =========================　スマホ =============================================================================== */
 
 @media (max-width: 767px) {
-  
+
   .is-sp {
     display: none;
   }

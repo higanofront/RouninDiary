@@ -1,0 +1,312 @@
+/* ==================　共通 ======================================== */
+
+body {
+  background: #EEEEEE;
+  color: #3E3E3E;
+}
+
+.is-pc {
+  display: none;
+}
+
+dl,
+dd {
+  margin: 0;
+}
+
+/* ========　ヘッダー ============================================= */
+header {
+  width: 100%;
+  height: 90px;
+  position: absolute;
+  top: 0;
+  box-shadow: 0px 5px 8px 0px rgb(0 0 0 / 10%);
+  background: #fff;
+}
+
+.header-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.header-logo {
+  width: 90px;
+  height: 90px;
+  overflow: hidden;
+}
+
+.header-logo-img {
+  width: 100%;
+  height: 100%;
+  transform: scale(1.5);
+}
+
+.header-menu {
+  display: flex;
+  margin-left: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: 100%;
+}
+
+.header-menu-item {
+  height: 100%;
+  width: 90px;
+  border-right: 1px solid #e6e6e6;
+  text-align: center;
+  padding: 5px;
+}
+
+.header-menu-item:first-child {
+  border-left: 1px solid #e6e6e6;
+}
+
+.header-menu-item-link {
+  width: 100%;
+  height: 100%;
+}
+
+.header-menu-text {
+  font-size: 13px;
+}
+
+
+
+/* ===========　日記追加 ====================== */
+.addDiary {
+  margin-top: 90px;
+  padding: 60px 0;
+}
+
+.add-inner {
+  width: 960px;
+  margin: 0 auto;
+}
+
+.add-head {
+  background: #000000;
+  padding: 63px 0;
+  color: #fff;
+  line-height: calc(40 / 36);
+  border-radius: 12px 12px 0 0;
+  position: relative;
+  height: 200px;
+}
+
+.add-head::before {
+  content: "";
+  background: url(../img/add-head.png);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: .5;
+}
+
+.add-head-title {
+  font-size: 36px;
+  position: relative;
+  text-align: center;
+}
+
+.add-head-text {
+  margin-top: 16px;
+  position: relative;
+  text-align: center;
+}
+
+.add-table {
+  background: #fff;
+}
+
+.add-form {
+  border-radius: 0 0 12px 12px;
+  background: #fff;
+}
+
+.add-form-row {
+  display: flex;
+}
+
+.add-form-label {
+  width: 20%;
+  max-width: 100%;
+  font-weight: 700;
+  padding: 40px;
+  text-align: center;
+  border-right: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+  font-size: 20px;
+}
+
+.add-form-content-label {
+  display: flex;
+  align-items: center;
+}
+
+label[for="content"] {
+  margin: 0 auto;
+}
+
+.add-form-input {
+  width: 80%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.add-form-input > input[type="text"] {
+  width: 100%;
+  height: 90%;
+  border: 2px solid #999;
+  padding: 3px 20px;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+.add-form-input > textarea {
+  width: 100%;
+  height: 90%;
+  border: 2px solid #999;
+  padding: 3px 20px;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+.add-form-btn {
+  text-align: center;
+  padding: 40px;
+}
+
+.add-form-btn button {
+  padding: 11px 50px 11px 50px;
+  width: 520px;
+  font-size: 16px;
+  color: #fff;
+  background: #FFAA3B;
+  border-radius: 10px;
+  border: none;
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease 0s;
+  transition: all 0.2s ease 0s;
+}
+
+/* =================== フッター ========================================= */
+
+footer {
+  text-align: center;
+  background: #787A91;
+  height: 90px;
+  padding: 30px 0 25px;
+}
+
+footer p {
+  color: #fff;
+  font-size: 18px;
+}
+
+/* ============ タブレット ============================================================= */
+@media (min-width: 768px) and (max-width: 1200px) {
+
+  /* =========　ヘッダー =================================== */
+  .header-inner {
+    width: 688px;
+  }
+
+  /* ============ 入力蘭 ====================================== */
+  .add-inner {
+    width: 688px;
+  }
+
+  .add-form-label {
+    font-size: 14px;
+  }
+
+}
+
+/* ============ スマホ ============================================================= */
+@media (max-width: 767px) {
+
+
+  h2,
+  p {
+    margin: 0;
+  }
+
+  .is-sp {
+    display: none;
+  }
+
+  .is-pc {
+    display: block;
+  }
+
+  /* =========　ヘッダー =================================== */
+  header {
+    height: 70px;
+  }
+
+  .header-inner {
+    width: 345px;
+  }
+
+  .header-logo {
+    width: 200px;
+    display: flex;
+    align-items: center;
+  }
+
+  .header-logo-title {
+    font-size: 22px;
+  }
+
+  /* ============ 入力蘭 ====================================== */
+  .add-inner {
+    width: 345px;
+  }
+
+  .addDiary {
+    padding: 30px 0;
+    margin-top: 70px;
+  }
+
+  .add-head {
+    height: 120px;
+    padding: 28px 0;
+  }
+
+  .add-head-title {
+    font-size: 28px;
+  }
+
+  .add-form-row {
+    display: block;
+  }
+
+  .add-form-label {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .add-form-input {
+    width: 100%;
+  }
+
+  .add-form-input > input[type="text"] {
+    padding: 10px 20px;
+  }
+
+  .add-form-btn button {
+    width: 220px;
+  }
+
+}
