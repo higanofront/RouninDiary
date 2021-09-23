@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.rounindiary.RouninDiary.entity.Diary;
+
 public class HandleDate {
 
 	public static Date parseStringToDate(String string) throws ParseException {
@@ -15,4 +17,10 @@ public class HandleDate {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		return simpleDateFormat.parse(formatedString);
 	}
+
+	public static void setCreationDate(Diary diary) {
+//    	現在日時の取得
+    	java.util.Date nowDate = new java.util.Date();
+    	diary.setCreatedAt(nowDate);
+    }
 }

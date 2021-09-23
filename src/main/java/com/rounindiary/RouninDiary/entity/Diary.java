@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -19,6 +21,7 @@ import lombok.NoArgsConstructor;
 public class Diary {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 
@@ -30,9 +33,6 @@ public class Diary {
 
 	@Column(name = "tag")
 	private String tag;
-
-	@Column(name = "user_id")
-	private Integer userId;
 
 	@Column(name = "created_at")
 	private Date createdAt;

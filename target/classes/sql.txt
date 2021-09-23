@@ -16,7 +16,6 @@ id INT(11) AUTO_INCREMENT NOT NULL,
 title VARCHAR(50) NOT NULL,
 content VARCHAR(300)  NOT NULL,
 tag VARCHAR(20),
-user_id INT(11) NOT NULL,
 created_at DATE,
 created_by VARCHAR(20),
 favolite_count INT(200),
@@ -24,7 +23,7 @@ exam_type VARCHAR(20),
 PRIMARY KEY(id)
 );
 
-INSERT diary(title, content, tag,user_id, created_at , favolite_count) VALUE('タイトル1', '人の一生は重荷を負て遠き道をゆくがごとし、いそぐべからず 不自由を常と思えば不足なし心に望みおこらば困窮したる時を思いだすべし 堪忍は無事長久の基いかりは敵と思え 勝つことばかりして負くることを知らざれば害そのみに至る 己を責めて人をせむるな 及ばざるは過ぎたるよりまされり。', '#タグ１', 1,'2021-09-15',1);
+INSERT diary(title, content, tag, created_at , favolite_count) VALUE('タイトル1', '人の一生は重荷を負て遠き道をゆくがごとし、いそぐべからず 不自由を常と思えば不足なし心に望みおこらば困窮したる時を思いだすべし 堪忍は無事長久の基いかりは敵と思え 勝つことばかりして負くることを知らざれば害そのみに至る 己を責めて人をせむるな 及ばざるは過ぎたるよりまされり。', '#タグ１', '2021-09-15',1);
 
 DROP TABLE USER;
 DROP TABLE DIARY;

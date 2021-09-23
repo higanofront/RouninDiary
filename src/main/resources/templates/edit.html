@@ -27,7 +27,7 @@
 	        <h2 class="add-head-title">日記を書く</h2>
 	        <p class="add-head-text">「継続」したことが自信になる。</p>
 	      </div>
-	      <form action="regist" class="add-form" method="Post" th:object="${Diary}">
+	      <form action="update" class="add-form" method="Get" th:object="${Diary}">
 	      	<input type="hidden" name="id" th:value="*{id}"/>
 	        <dl class="add-form-row">
 	          <dt class="add-form-label"><label for="title">タイトル</label></dt>
@@ -43,10 +43,10 @@
 	        </dl>
 	        <div class="add-form-row">
 	          <div class="add-form-label add-form-content-label"><label for="content">本文</label></div>
-	          <div class="add-form-input"><textarea id="content" cols="30" rows="10" name="content" th:value="*{content}"></textarea></div>
+	          <div class="add-form-input"><textarea id="content" cols="30" rows="10" name="content" th:text="*{content}"></textarea></div>
 	        </div>
 	        <div class="add-form-btn">
-	          <button type="submit">投稿する</button>
+	          <button type="submit">内容を更新する</button>
 	        </div>
 	      </form>
 	    </div>

@@ -9,4 +9,6 @@ import com.rounindiary.RouninDiary.entity.Diary;
 @Repository
 public interface DiaryRepository extends JpaRepository<Diary, Integer>, JpaSpecificationExecutor<Diary>  {
 
+	void save(DiaryRepository diary);
+
 }
