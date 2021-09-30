@@ -3,13 +3,14 @@ package com.rounindiary.RouninDiary.commons;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 import com.rounindiary.RouninDiary.entity.Diary;
 
 public class HandleDate {
 
 	public static Date parseStringToDate(String string) throws ParseException {
-		if(string.isEmpty()) {
+		if(Objects.isNull(string) || string.isEmpty()) {
 			return null;
 		}
 		String[] muchDateInfo = string.split("-");

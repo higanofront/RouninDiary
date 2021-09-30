@@ -19,9 +19,7 @@
       </div>
       <ul class="header-menu is-sp">
         <li class="header-menu-item"><a class="header-menu-item-link" href="add" ><i class="fas fa-pen-fancy fa-3x"></i><p class="header-menu-text">日記を書く</p></a></li>
-        <li class="header-menu-item"><a class="header-menu-item-link" href="#" ><i class="fas fa-search fa-3x"></i><p class="header-menu-text">日記を探す</p></a></li>
-        <li class="header-menu-item"><a class="header-menu-item-link" href="#" ><i class="fas fa-tasks fa-3x"></i><p class="header-menu-text">ユーザー管理</p></a></li>
-        <li class="header-menu-item"><a class="header-menu-item-link" href="#" ><i class="fas fa-user-alt fa-3x"></i><p class="header-menu-text">ログイン</p></a></li>
+        <li class="header-menu-item"><a class="header-menu-item-link" href="#search-section" ><i class="fas fa-search fa-3x"></i><p class="header-menu-text">日記を探す</p></a></li>
       </ul>
       <div class="drower-icon">
         <div class="drower-icon-bars">
@@ -56,7 +54,7 @@
         <p class="main-visual-text">「負けたことがある」<br class="is-pc">というのが、<br> いつか大きな財産になる。</p>
       </div>
     </div>
-    <section class="search">
+    <section id="search-section" class="search">
       <div class="inner">
         <form class="search-form">
           <table class="search-table">
@@ -72,7 +70,11 @@
             </tbody>
           </table>
           <div class="button-container cond-open-button-container">
-            <button class="button">条件を追加</button>
+            <button class="button add-conds-button" type="button">条件を追加</button>
+            <div class="question-bars">
+              <div class="question-bar1"></div>
+              <div class="question-bar2"></div>
+            </div>
           </div>
           <table class="search-table search-add-cond-table">
             <tbody class="search-box-body">
@@ -158,37 +160,28 @@
         </div>
         <div class="pagination">
           <ul class="pagination-list">
-            <li class="pagination-item">
-              <a href="#" class="pagination-link">最初</a>
-            </li>
-            <li class="pagination-item">
-              <a href="#" class="pagination-link">前へ</a>
-            </li>
-            <li class="pagination-item">
-              <a href="#" class="pagination-link displaying">1</a>
-            </li>
-            <li class="pagination-item">
-              <a href="#" class="pagination-link">2</a>
-            </li>
-            <li class="pagination-item is-sp">
-              <a href="#" class="pagination-link">3</a>
-            </li>
-            <li class="pagination-item is-sp">
-              <a href="#" class="pagination-link">4</a>
-            </li>
-            <li class="pagination-item is-sp">
-              <a href="#" class="pagination-link">5</a>
-            </li>
-            <li class="pagination-item">
-              <a href="#" class="pagination-link">...</a>
-            </li>
-            <li class="pagination-item">
-              <a href="#" class="pagination-link">次へ</a>
-            </li>
-            <li class="pagination-item">
-              <a href="#" class="pagination-link">最後</a>
-            </li>
-          </ul>
+		    <li id="pagination-pre" class="pagination-list-item">
+		      <span th:if="${page.first}">&lt;&lt;前</span>
+		      <a class="pagination-link" th:if="${!page.first}" th:href="@{${path}(page = ${page.number} - 1)}">
+		        &lt;&lt;前
+		      </a>
+		    </li>
+		    <li id="pagination-number" class="pagination-list-item" th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}" th:classappend="${i} == ${page.number} ? appear : disappear">
+		      <span th:if="${i} == ${page.number}" th:text="${i + 1}">1</span>
+		      <div class="pagination-link" th:if="${i} != ${page.number}" th:data-page="@{${i}}">
+		      	<span th:text="${i+1}">1</span>
+		      </div>
+		     <!-- <a class="pagination-link" th:if="${i} != ${page.number}" th:href="@{${path}(page = ${i})}">
+		        <span th:text="${i+1}">1</span>
+		      </a> -->
+		    </li>
+		    <li id="pagination-next" class="pagination-list-item">
+		      <span th:if="${page.last}">次&gt;&gt;</span>
+		      <a class="pagination-link" th:if="${!page.last}" th:href="@{${path}(page = (${page.number} + 1))}">
+		        次&gt;&gt;
+		      </a>
+		    </li>
+		  </ul>
         </div>
       </div>
     </section>

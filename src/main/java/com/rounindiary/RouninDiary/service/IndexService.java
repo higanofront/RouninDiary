@@ -1,17 +1,16 @@
 package com.rounindiary.RouninDiary.service;
 
 import java.text.ParseException;
-import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
-import com.rounindiary.RouninDiary.commons.DiarysDto;
+import com.rounindiary.RouninDiary.dto.DiaryDto;
 import com.rounindiary.RouninDiary.entity.Diary;
 import com.rounindiary.RouninDiary.form.SearchForm;
 
 public interface IndexService {
-
-	 List<Diary> findAll();
 
 	 Specification<Diary> likeTitle(String searchTitle);
 
@@ -27,9 +26,11 @@ public interface IndexService {
 
 	 Specification<Diary> lessThanFavoliteCountTo(Integer searchFavoliteCountTo);
 
-	 DiarysDto searchDiary(SearchForm searchForm) throws ParseException;
-
 	 Specification<Diary> likeCreatedBy(String searchCreatedBy);
 
 	 Specification<Diary> likeExamType(String searchExamType);
+
+	Page<Diary> findAll(Pageable pageable);
+
+	DiaryDto searchDiary(SearchForm searchForm, Pageable pageable) throws ParseException;
 }

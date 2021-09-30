@@ -30,6 +30,7 @@ public class EditServiceImpl implements EditService{
 		updateTarget.setTag(editForm.getTag());
 		updateTarget.setExamType(editForm.getExamType());
 		updateTarget.setContent(editForm.getContent());
+		updateTarget.setCreatedBy(editForm.getCreatedBy());
 		return updateTarget;
 	}
 

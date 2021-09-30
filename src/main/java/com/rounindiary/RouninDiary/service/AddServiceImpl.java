@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rounindiary.RouninDiary.entity.Diary;
+import com.rounindiary.RouninDiary.form.AddForm;
 import com.rounindiary.RouninDiary.repository.DiaryRepository;
 
 @Service
@@ -14,5 +15,15 @@ public class AddServiceImpl implements AddService {
 
 	public void saveDiary(Diary diary) {
 		diaryRepository.save(diary);
+	}
+
+	public Diary setForminput(AddForm addform, Diary diary) {
+		diary.setTitle(addform.getTitle());
+		diary.setTag(addform.getTag());
+		diary.setContent(addform.getContent());
+		diary.setCreatedBy(addform.getCreatedBy());
+		diary.setExamType(addform.getExamType());
+
+		return diary;
 	}
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.rounindiary.RouninDiary.commons.HandleDate;
 import com.rounindiary.RouninDiary.entity.Diary;
+import com.rounindiary.RouninDiary.form.AddForm;
 import com.rounindiary.RouninDiary.service.AddService;
 
 @Controller
@@ -32,10 +33,12 @@ public class AddController {
 
 	@PostMapping("regist")
 	public String getRegist (
-			Diary diary,
+			AddForm addForm,
 			Model model) {
-		HandleDate.setCreationDate(diary);
-		addService.saveDiary(diary);
+		Diary diary = new Diary();
+		Diary settedInputDiary = addService.setForminput(addForm, diary);
+		HandleDate.setCreationDate(settedInputDiary);
+		addService.saveDiary(settedInputDiary);
 
 		return "redirect:/";
 	}

@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="./css/sanitize.css">
   <link rel="stylesheet" href="./css/add.css">
   <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
-  <title>日記を書く</title>
+  <title>日記を編集する</title>
 </head>
 <body>
   <header id="js-header">
@@ -24,7 +24,7 @@
   	<section class="addDiary">
 	    <div class="add-inner">
 	      <div class="add-head">
-	        <h2 class="add-head-title">日記を書く</h2>
+	        <h2 class="add-head-title">日記を編集する</h2>
 	        <p class="add-head-text">「継続」したことが自信になる。</p>
 	      </div>
 	      <form action="update" class="add-form" method="Get" th:object="${Diary}">
@@ -40,6 +40,10 @@
 	        <dl class="add-form-row">
 	          <dt class="add-form-label"><label for="exam_type">浪人種別</label></dt>
 	          <dd class="add-form-input"><input type="text" id="exam_type" placeholder="大学受験" name="examType" th:value="*{examType}"></dd>
+	        </dl>
+	        <dl class="add-form-row">
+	          <dt class="add-form-label"><label for="created_by">投稿者</label></dt>
+	          <dd class="add-form-input"><input type="text" id="created_by" placeholder="大学受験" name="createdBy" th:value="*{createdBy}"></dd>
 	        </dl>
 	        <div class="add-form-row">
 	          <div class="add-form-label add-form-content-label"><label for="content">本文</label></div>

@@ -2,15 +2,6 @@ CREATE DATABASE RouninDiary;
 
 USE RouninDiary;
 
-CREATE TABLE user(
-id INT(11) AUTO_INCREMENT NOT NULL,
-name VARCHAR(20) NOT NULL,
-password VARCHAR(20)  NOT NULL,
-PRIMARY KEY(id)
-);
-
-INSERT user(name, password) VALUE('ひがの', 'password');
-
 CREATE TABLE diary(
 id INT(11) AUTO_INCREMENT NOT NULL,
 title VARCHAR(50) NOT NULL,
@@ -25,5 +16,4 @@ PRIMARY KEY(id)
 
 INSERT diary(title, content, tag, created_at , favolite_count) VALUE('タイトル1', '人の一生は重荷を負て遠き道をゆくがごとし、いそぐべからず 不自由を常と思えば不足なし心に望みおこらば困窮したる時を思いだすべし 堪忍は無事長久の基いかりは敵と思え 勝つことばかりして負くることを知らざれば害そのみに至る 己を責めて人をせむるな 及ばざるは過ぎたるよりまされり。', '#タグ１', '2021-09-15',1);
 
-DROP TABLE USER;
 DROP TABLE DIARY;

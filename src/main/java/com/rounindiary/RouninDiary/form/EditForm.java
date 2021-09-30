@@ -17,5 +17,7 @@ public class EditForm {
 
 	String examType;
 
+	String createdBy;
+
 	String content;
 }

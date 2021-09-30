@@ -1,34 +1,27 @@
 package com.rounindiary.RouninDiary.dto;
 
-import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Component;
 
-import lombok.AllArgsConstructor;
+import com.rounindiary.RouninDiary.entity.Diary;
+import com.rounindiary.RouninDiary.form.SearchForm;
+
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
+@Component
 public class DiaryDto {
 
-	@Id
-	private Integer id;
-	private String keyWord;
-	private String title;
-	private String content;
-	private String tag;
-	private Integer userId;
-	private String name;
-	private String examType;
-	private String createdAtFrom;
-	private String createdAtTo;
-	private Date createdAt;
-	private Integer favoliteCountFrom;
-	private Integer favoliteCountTo;
-	private Integer favoliteCount;
+	private List<Diary> searchResults;
+
+	private SearchForm SearchForm;
+
+	private String path = "search";
+
+	private Page<Diary> page;
 
 }
+
+
