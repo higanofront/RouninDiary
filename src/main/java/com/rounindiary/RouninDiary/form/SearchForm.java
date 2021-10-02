@@ -15,8 +15,4 @@ public class SearchForm {
 
 	private String createdAtTo;
 
-	private Integer favoliteCountFrom;
-
-	private Integer favoliteCountTo;
-
 }

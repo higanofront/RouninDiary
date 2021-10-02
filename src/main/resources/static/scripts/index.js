@@ -83,9 +83,7 @@ class Index {
 				   createdBy: searchConds.createdBy,
 				   examType: searchConds.examType,
 				   createdAtFrom: searchConds.createdAtFrom,
-				   createdAtTo: searchConds.createdAtTo,
-				   favoliteCountFrom: searchConds.favoliteCountFrom,
-				   favoliteCountTo: searchConds.favoliteCountTo
+				   createdAtTo: searchConds.createdAtTo
 				   },
 			dataType: "Json",
 			timeout: 30000,
@@ -113,9 +111,7 @@ class Index {
 						   'name': name,
 						   'examType': examType,
 						   'createdAtFrom': createdAtFrom,
-						   'createdAtTo': createdAtTo,
-						   'favoliteCountFrom': favoliteCountFrom,
-						   'favoliteCountTo': favoliteCountTo
+						   'createdAtTo': createdAtTo
 						   };
 		return searchConds;
 	}
@@ -137,9 +133,6 @@ class Index {
 			let articleInfoItemCreatedAt = $('<li class="article-info-item">').appendTo(articleInfo);
 			articleInfoItemCreatedAt.append('<i class="fas fa-clock"></i>');
 			articleInfoItemCreatedAt.append('<span>' + diary.createdAt + '</span>');
-			let articleInfoItemFavoliteCount = $('<li class="article-info-item">').appendTo(articleInfo);
-			articleInfoItemFavoliteCount.append('<i class="fas fa-thumbs-up"></i>');
-			articleInfoItemFavoliteCount.append('<span>' + diary.favoliteCount + '</span>');
 			article.append('<p class="article-text">' + diary.content + '</p>');
 		});
 	}

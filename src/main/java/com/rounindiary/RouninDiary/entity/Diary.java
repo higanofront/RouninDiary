@@ -43,9 +43,6 @@ public class Diary {
 	@Column(name = "created_by")
 	private String createdBy;
 
-	@Column(name = "favolite_count")
-	private Integer favoliteCount;
-
 	@Column(name = "exam_type")
 	private String examType;
 

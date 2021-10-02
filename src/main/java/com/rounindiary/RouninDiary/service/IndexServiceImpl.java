@@ -2,7 +2,6 @@ package com.rounindiary.RouninDiary.service;
 
 import java.text.ParseException;
 import java.util.Date;
-import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -38,12 +37,10 @@ public class IndexServiceImpl implements IndexService {
 				.or(this.likeContent(searchForm.getKeyWord()))
 				.and(this.greaterThanCreatedAtFrom(searchForm.getCreatedAtFrom()))
 				.and(this.lessThanCreatedAtTo(searchForm.getCreatedAtFrom()))
-				.and(this.greaterThanFavoliteCountFrom(searchForm.getFavoliteCountFrom()))
 				.and(this.likeCreatedBy(searchForm.getCreatedBy()))
 				.and(this.likeExamType(searchForm.getExamType())),
 				pageable);
 		diaryDto.setPage(diarys);
-		
 		diaryDto.setSearchResults(diarys.getContent());
 		diaryDto.setSearchForm(searchForm);
 
@@ -99,26 +96,6 @@ public class IndexServiceImpl implements IndexService {
 				return cb.conjunction();
 			}
             return cb.lessThan(root.get("createdAt"), parsedDate);
-        };
-    }
-
-	@Override
-	public Specification<Diary> greaterThanFavoliteCountFrom(Integer searchFavoliteCountFrom) {
-        return (root, query, cb) -> {
-        	if(Objects.isNull(searchFavoliteCountFrom)) {
-				return cb.conjunction();
-			}
-            return cb.greaterThan(root.get("favoliteCount"), searchFavoliteCountFrom);
-        };
-    }
-
-	@Override
-	public Specification<Diary> lessThanFavoliteCountTo(Integer searchFavoliteCountTo) {
-        return (root, query, cb) -> {
-        	if(Objects.isNull(searchFavoliteCountTo)) {
-				return cb.conjunction();
-			}
-            return cb.lessThan(root.get("favoliteCount"), searchFavoliteCountTo);
         };
     }
 

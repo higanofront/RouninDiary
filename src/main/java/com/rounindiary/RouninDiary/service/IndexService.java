@@ -22,15 +22,11 @@ public interface IndexService {
 
 	 Specification<Diary> lessThanCreatedAtTo(String searchCreatedTo) throws ParseException;
 
-	 Specification<Diary> greaterThanFavoliteCountFrom(Integer searchFavoliteCountFrom);
-
-	 Specification<Diary> lessThanFavoliteCountTo(Integer searchFavoliteCountTo);
-
 	 Specification<Diary> likeCreatedBy(String searchCreatedBy);
 
 	 Specification<Diary> likeExamType(String searchExamType);
 
-	Page<Diary> findAll(Pageable pageable);
+	 Page<Diary> findAll(Pageable pageable);
 
-	DiaryDto searchDiary(SearchForm searchForm, Pageable pageable) throws ParseException;
+	 DiaryDto searchDiary(SearchForm searchForm, Pageable pageable) throws ParseException;
 }
