@@ -74,7 +74,21 @@ header {
   font-size: 13px;
 }
 
+.header-menu-item {
+	display: none;
+}
 
+.drower-icon {
+	display: none;
+}
+
+.drower-content {
+	display: none;
+}
+
+.drower-background {
+	display: none;
+}
 
 /* ===========　日記追加 ====================== */
 .addDiary {

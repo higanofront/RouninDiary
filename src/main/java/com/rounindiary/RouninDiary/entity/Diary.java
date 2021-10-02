@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,6 +36,7 @@ public class Diary {
 	@Column(name = "tag")
 	private String tag;
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "created_at")
 	private Date createdAt;
 

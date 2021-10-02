@@ -10,16 +10,7 @@
   <title>日記を編集する</title>
 </head>
 <body>
-  <header id="js-header">
-    <div class="header-inner">
-      <div class="header-logo">
-        <img class="header-logo-img is-sp" src="./img/logo.png" alt="浪人ダイアリー">
-        <h1 class="header-logo-title is-pc">浪人DIARY</h1>
-      </div>
-      <ul class="header-menu is-sp">
-      </ul>
-    </div>
-  </header>
+  <div th:replace="./header.html::header"></div>
   <main>
   	<section class="addDiary">
 	    <div class="add-inner">
@@ -56,8 +47,6 @@
 	    </div>
   </section>
   </main>
-  <footer>
-    <p>© 2021 All rights reserved by higano.</p>
-  </footer>
+  <div th:replace="./footer.html::footer"></div>
 </body>
 </html>

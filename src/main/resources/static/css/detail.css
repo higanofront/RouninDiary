@@ -73,6 +73,22 @@ header {
   font-size: 13px;
 }
 
+.header-menu-item {
+	display: none;
+}
+
+.drower-icon {
+	display: none;
+}
+
+.drower-content {
+	display: none;
+}
+
+.drower-background {
+	display: none;
+}
+
 /* ====================== 詳細 ========================================= */
 .detail {
   padding: 80px 0;
@@ -171,8 +187,6 @@ footer {
   background: #787A91;
   height: 90px;
   padding: 30px 0 25px;
-  position: absolute;
-  bottom: 0;
   width: 100%;
 }
 
