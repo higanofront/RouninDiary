@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/sanitize.css">
-  <link rel="stylesheet" href="./css/add.css">
+  <link rel="stylesheet" href="./css/edit.css">
   <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
   <title>日記を編集する</title>
 </head>
@@ -18,27 +18,42 @@
 	        <h2 class="add-head-title">日記を編集する</h2>
 	        <p class="add-head-text">「継続」したことが自信になる。</p>
 	      </div>
-	      <form action="update" class="add-form" method="Get" th:object="${Diary}">
+	      <form action="update" class="add-form" method="Get" th:object="${editForm}">
 	      	<input type="hidden" name="id" th:value="*{id}"/>
 	        <dl class="add-form-row">
 	          <dt class="add-form-label"><label for="title">タイトル</label></dt>
-	          <dd class="add-form-input"><input type="text" id="title" placeholder="タイトル" name="title" th:value="*{title}"></dd>
+	          <dd class="add-form-input">
+	          	<input type="text" id="title" placeholder="タイトル" name="title" th:value="*{title}">
+	          	<p th:errors="*{title}"></p>
+	          </dd>
 	        </dl>
 	        <dl class="add-form-row">
 	          <dt class="add-form-label"><label for="tag">タグ</label></dt>
-	          <dd class="add-form-input"><input type="text" id="tag" placeholder="#浪人生と繋がりたい" name="tag" th:value="*{tag}"></dd>
+	          <dd class="add-form-input">
+	          	<input type="text" id="tag" placeholder="#浪人生と繋がりたい" name="tag" th:value="*{tag}">
+	          	<p th:errors="*{tag}"></p>
+	          </dd>
 	        </dl>
 	        <dl class="add-form-row">
 	          <dt class="add-form-label"><label for="exam_type">浪人種別</label></dt>
-	          <dd class="add-form-input"><input type="text" id="exam_type" placeholder="大学受験" name="examType" th:value="*{examType}"></dd>
+	          <dd class="add-form-input">
+	          	<input type="text" id="exam_type" placeholder="大学受験" name="examType" th:value="*{examType}">
+	          	<p th:errors="*{examType}"></p>
+	          </dd>
 	        </dl>
 	        <dl class="add-form-row">
 	          <dt class="add-form-label"><label for="created_by">投稿者</label></dt>
-	          <dd class="add-form-input"><input type="text" id="created_by" placeholder="大学受験" name="createdBy" th:value="*{createdBy}"></dd>
+	          <dd class="add-form-input">
+	          	<input type="text" id="created_by" placeholder="大学受験" name="createdBy" th:value="*{createdBy}">
+	          	<p th:errors="*{createdBy}"></p>
+	          </dd>
 	        </dl>
 	        <div class="add-form-row">
 	          <div class="add-form-label add-form-content-label"><label for="content">本文</label></div>
-	          <div class="add-form-input"><textarea id="content" cols="30" rows="10" name="content" th:text="*{content}"></textarea></div>
+	          <div class="add-form-input">
+	          	<textarea id="content" cols="30" rows="10" name="content" th:text="*{content}"></textarea>
+	          	<p th:errors="*{content}"></p>
+	          </div>
 	        </div>
 	        <div class="add-form-btn">
 	          <button type="submit">内容を更新する</button>
@@ -48,5 +63,11 @@
   </section>
   </main>
   <div th:replace="./footer.html::footer"></div>
+   <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="./scripts/common.js"></script>
+  <script type="text/javascript">
+	new Common();
+  </script>
 </body>
 </html>

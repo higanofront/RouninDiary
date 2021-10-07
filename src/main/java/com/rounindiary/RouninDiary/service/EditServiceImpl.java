@@ -34,4 +34,15 @@ public class EditServiceImpl implements EditService{
 		return updateTarget;
 	}
 
+	@Override
+	public EditForm setDiaryInfo(Diary editTarget, EditForm editForm) {
+		editForm.setId(editTarget.getId());
+		editForm.setTitle(editTarget.getTitle());
+		editForm.setTag(editTarget.getTag());
+		editForm.setContent(editTarget.getContent());
+		editForm.setCreatedBy(editTarget.getCreatedBy());
+		editForm.setExamType(editTarget.getExamType());
+		return editForm;
+	}
+
 }

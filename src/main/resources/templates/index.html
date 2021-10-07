@@ -86,11 +86,11 @@
     <section class="diary">
       <div class="inner">
         <div class="result">
-          <div class="count"><span class="count-number">1,000</span>件</div>
+          <div class="count"><span class="count-number"></span><span class="unit"></span></div>
           <div class="sort-select-container">
-            <select required>
-              <option value="">未選択</option>
-              <option value="1">新着順</option>
+            <select class="sort-select" required>
+              <option value="Unselected">未選択</option>
+              <option value="createdAt,DESC">新着順</option>
             </select>
           </div>
         </div>
@@ -106,7 +106,7 @@
               </ul>
               <p class="article-text" th:text="${diary.content}">For an extra thick and creamy bowl, add oat bran.  It'll make for a hearty helping and also add more fiber to your meal.  If you love the taste of chai, you'll enjoy this spiced version with coriander, cinnamon, and turmeric.</p>
             </article>
-		      </div>
+		  </div>
         </div>
         <div class="pagination">
           <ul class="pagination-list">
@@ -139,6 +139,10 @@
   <script src="./scripts/index.js"></script>
   <script type="text/javascript">
 	new Index();
+  </script>
+  <script src="./scripts/common.js"></script>
+  <script type="text/javascript">
+	new Common();
   </script>
 </body>
 </html>

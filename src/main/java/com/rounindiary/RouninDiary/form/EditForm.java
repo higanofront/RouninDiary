@@ -1,23 +1,34 @@
 package com.rounindiary.RouninDiary.form;
 
-import lombok.AllArgsConstructor;
+import javax.validation.constraints.NotBlank;
+
+import org.hibernate.validator.constraints.Length;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class EditForm {
 
 	Integer id;
 
+	@NotBlank
+	@Length(min = 1, max = 20)
 	String title;
 
+	@Length(min = 0, max = 20)
 	String tag;
 
+	@NotBlank
+	@Length(min = 1, max = 20)
 	String examType;
 
+	@NotBlank
+	@Length(min = 1, max = 20)
 	String createdBy;
 
+	@NotBlank
+	@Length(min = 1, max = 200)
 	String content;
 }

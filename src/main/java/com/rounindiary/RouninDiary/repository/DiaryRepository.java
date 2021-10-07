@@ -13,6 +13,6 @@ public interface DiaryRepository extends JpaRepository<Diary, Integer>, JpaSpeci
 
 	void save(DiaryRepository diary);
 
-	public Page<Diary> findAll(Pageable pageable);
+	Page<Diary> findAll(Pageable pageable);
 
 }

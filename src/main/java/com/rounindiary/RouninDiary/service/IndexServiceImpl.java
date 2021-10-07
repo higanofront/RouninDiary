@@ -1,7 +1,7 @@
 package com.rounindiary.RouninDiary.service;
 
-import java.text.ParseException;
 import java.util.Date;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,7 +10,6 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.util.StringUtils;
 
-import com.rounindiary.RouninDiary.commons.HandleDate;
 import com.rounindiary.RouninDiary.dto.DiaryDto;
 import com.rounindiary.RouninDiary.entity.Diary;
 import com.rounindiary.RouninDiary.form.SearchForm;
@@ -30,20 +29,24 @@ public class IndexServiceImpl implements IndexService {
 		return diaryRepository.findAll(pageable);
 	}
 
-	public DiaryDto searchDiary(SearchForm searchForm, Pageable pageable) throws ParseException {
+	public DiaryDto searchDiary(SearchForm searchForm, Pageable pageable) {
 		Page<Diary> diarys = diaryRepository.findAll(Specification
 				.where(this.likeTitle(searchForm.getKeyWord()))
 				.or(this.likeTag(searchForm.getKeyWord()))
 				.or(this.likeContent(searchForm.getKeyWord()))
 				.and(this.greaterThanCreatedAtFrom(searchForm.getCreatedAtFrom()))
-				.and(this.lessThanCreatedAtTo(searchForm.getCreatedAtFrom()))
 				.and(this.likeCreatedBy(searchForm.getCreatedBy()))
-				.and(this.likeExamType(searchForm.getExamType())),
+				.and(this.likeExamType(searchForm.getExamType()))
+				.and(this.lessThanCreatedAtTo(searchForm.getCreatedAtTo())),
 				pageable);
 		diaryDto.setPage(diarys);
 		diaryDto.setSearchResults(diarys.getContent());
-		diaryDto.setSearchForm(searchForm);
+		diaryDto.setIsError(false);
+		return diaryDto;
+	}
 
+	public DiaryDto returnError() {
+		diaryDto.setIsError(true);
 		return diaryDto;
 	}
 
@@ -78,24 +81,22 @@ public class IndexServiceImpl implements IndexService {
     }
 
 	@Override
-	public Specification<Diary> greaterThanCreatedAtFrom(String searchCreatedAtFrom) throws ParseException {
-		Date parsedDate = HandleDate.parseStringToDate(searchCreatedAtFrom);
+	public Specification<Diary> greaterThanCreatedAtFrom(Date searchCreatedAtFrom) {
         return (root, query, cb) -> {
-        	if(StringUtils.isEmpty(searchCreatedAtFrom)) {
+        	if(Objects.isNull(searchCreatedAtFrom)) {
 				return cb.conjunction();
 			}
-            return cb.greaterThan(root.get("createdAt"), parsedDate);
+            return cb.greaterThan(root.get("createdAt"), searchCreatedAtFrom);
         };
     }
 
 	@Override
-	public Specification<Diary> lessThanCreatedAtTo(String searchCreatedTo) throws ParseException {
-		Date parsedDate = HandleDate.parseStringToDate(searchCreatedTo);
+	public Specification<Diary> lessThanCreatedAtTo(Date searchCreatedAtTo) {
         return (root, query, cb) -> {
-        	if(StringUtils.isEmpty(searchCreatedTo)) {
+        	if(Objects.isNull(searchCreatedAtTo)) {
 				return cb.conjunction();
 			}
-            return cb.lessThan(root.get("createdAt"), parsedDate);
+            return cb.lessThan(root.get("createdAt"), searchCreatedAtTo);
         };
     }
 
@@ -118,5 +119,4 @@ public class IndexServiceImpl implements IndexService {
             return cb.equal(root.get("examType"), searchExamType);
         };
 	}
-
 }

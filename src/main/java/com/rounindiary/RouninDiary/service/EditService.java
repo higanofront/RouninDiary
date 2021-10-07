@@ -11,5 +11,7 @@ public interface EditService {
 
 	Diary setFormInput(EditForm editForm, Diary updateTarget);
 
+	EditForm setDiaryInfo(Diary editTarget, EditForm editForm);
+
 
 }

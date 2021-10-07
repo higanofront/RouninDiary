@@ -1,14 +1,15 @@
 package com.rounindiary.RouninDiary.controller;
 
-import java.text.ParseException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.rounindiary.RouninDiary.dto.DiaryDto;
@@ -46,8 +47,12 @@ public class IndexController {
 	@GetMapping("search")
 	@ResponseBody
 	public DiaryDto getSearch(
-			SearchForm searchForm,
-			@PageableDefault(page = 0, size = 5) Pageable pageable) throws ParseException {
+			@ModelAttribute @Validated SearchForm searchForm,
+			BindingResult bindingResult,
+			@PageableDefault(page = 0, size = 5) Pageable pageable) {
+		if(bindingResult.hasErrors()){
+			return indexService.returnError();
+		}
 		return indexService.searchDiary(searchForm, pageable);
 	}
 

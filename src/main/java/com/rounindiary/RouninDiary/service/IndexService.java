@@ -1,6 +1,6 @@
 package com.rounindiary.RouninDiary.service;
 
-import java.text.ParseException;
+import java.util.Date;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,15 +18,17 @@ public interface IndexService {
 
 	 Specification<Diary> likeContent(String searchContent);
 
-	 Specification<Diary> greaterThanCreatedAtFrom(String searchCreatedAtFrom) throws ParseException;
-
-	 Specification<Diary> lessThanCreatedAtTo(String searchCreatedTo) throws ParseException;
-
 	 Specification<Diary> likeCreatedBy(String searchCreatedBy);
 
 	 Specification<Diary> likeExamType(String searchExamType);
 
 	 Page<Diary> findAll(Pageable pageable);
 
-	 DiaryDto searchDiary(SearchForm searchForm, Pageable pageable) throws ParseException;
+	 DiaryDto searchDiary(SearchForm searchForm, Pageable pageable);
+
+	 Specification<Diary> greaterThanCreatedAtFrom(Date searchCreatedAtFrom);
+
+	 Specification<Diary> lessThanCreatedAtTo(Date searchCreatedTo);
+
+	 DiaryDto returnError();
 }

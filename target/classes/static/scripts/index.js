@@ -1,8 +1,9 @@
 
 class Index {
 
-	constructor(){
+	constructor() {
 		let thisClass = this;
+
 		/*検索*/
 		$('.search-button').click(function(e) {
 			e.preventDefault();
@@ -32,16 +33,7 @@ class Index {
 		thisClass.watchPagenationEvent();
 
 		/*日記詳細ページ遷移*/
-		$('diary-card, article').click(function(){
-			let articleTitle = $(this).find('.article-title');
-			let url = articleTitle.attr('href');
-			window.open(url);
-		});
-
-		/*ヘッダーロゴ遷移処理*/
-		$('.header-logo').click(function(){
-			window.location.href = '/';
-		});
+		thisClass.watchDetailEvent();
 
 		// 日記を探すスムーススクロール
 		$('a[href^="#"]').click(function() {
@@ -62,15 +54,38 @@ class Index {
 		  return false;
 		});
 
+		/*並び替え*/
+		$('.sort-select').change(function() {
+		    var sort = $(this).val();
+			if(sort === "Unselected") {
+				return false;
+			}
+			let searchConds = thisClass.getSearchConds();
+			let callback = thisClass.rebuildSearchResult();
+			let url = 'search?sort=' + sort;
+			thisClass.ajaxGet(callback, searchConds, url);
+		});
 
+		/*並び替えボタン、ホバー時デザイン変更処理*/
+		$('.sort-select').hover(function(){
+			$('.sort-select').toggleClass('hoverd');
+			$('.sort-select-container').toggleClass('hoverd');
+		});
 	}
 
 	rebuildSearchResult() {
 		let thisClass = this;
 		return function(data) {
-			thisClass.createDiary(data);
-			thisClass.createPagenation(data);
-			thisClass.watchPagenationEvent();
+			if(data.isError) {
+				thisClass.createErrorMsg();
+			} else {
+				thisClass.removeErrorMsg();
+				thisClass.createResultCount(data);
+				thisClass.createDiarys(data);
+				thisClass.createPagenation(data);
+				thisClass.watchPagenationEvent();
+				thisClass.watchDetailEvent();
+			}
 		}
 	}
 
@@ -94,7 +109,7 @@ class Index {
 				}
 			},
 			error: function(data) {
-				console.log("エラーです");
+				console.log("ajaxエラーです");
 			}
 		});
 	}
@@ -116,12 +131,12 @@ class Index {
 		return searchConds;
 	}
 
-	createDiary(data) {
+	createDiarys(data) {
 		$('.diary-cards').empty();
 		data.searchResults.forEach(function(diary) {
 			let diaryCard = $('<div class="diary-card">').appendTo('.diary-cards');
 			let article = $('<article></article>').appendTo(diaryCard);
-			article.append('<a class="article-title" href="detail?id=1' + diary.id + '">' + diary.title + '</a>');
+			article.append('<a class="article-title" href="detail?id=' + diary.id + '">' + diary.title + '</a>');
 			article.append('<h3 class="article-tag" >' + diary.tag + '</h3>');
 			let articleInfo = $('<ul class="article-info"></ul>').appendTo(article);
 			let articleInfoItemCreatedBy = $('<li class="article-info-item">').appendTo(articleInfo);
@@ -169,11 +184,38 @@ class Index {
 		$('.pagination-list-item > span, .pagination-list-item > div').click(function(e){
 			e.preventDefault();
 			let page = $(this).data().page;
+			let sort = $('.sort-select').val();
 			let url = 'search?page=' + page;
+			if(sort !== "Unselected") {
+				url = 'search?page=' + page + '&sort=' + sort;
+			}
 		  	let searchConds = thisClass.getSearchConds();
 			let callback = thisClass.rebuildSearchResult();
 			thisClass.ajaxGet(callback, searchConds, url);
 		});
+	}
+
+	watchDetailEvent() {
+		$('diary-card, article').click(function(){
+			let articleTitle = $(this).find('.article-title');
+			let url = articleTitle.attr('href');
+			window.open(url);
+		});
+	}
+
+	removeErrorMsg() {
+		$('.error-msg-container').remove();
+	}
+
+	createErrorMsg() {
+		let errorMsgContainer = $('<div class="error-msg-container"></div>').insertAfter('.search-add-cond-table');
+		errorMsgContainer.append('<p>※キーワード・投稿者・浪人種別は20文字以下で入力してください');
+	}
+
+	createResultCount(data) {
+		$('.count-number').empty();
+		$('.count-number').text(data.page.totalElements);
+		$('.unit').text('件');
 	}
 
 }

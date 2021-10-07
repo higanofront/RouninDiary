@@ -6,7 +6,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import com.rounindiary.RouninDiary.entity.Diary;
-import com.rounindiary.RouninDiary.form.SearchForm;
 
 import lombok.Data;
 
@@ -16,11 +15,9 @@ public class DiaryDto {
 
 	private List<Diary> searchResults;
 
-	private SearchForm SearchForm;
-
-	private String path = "search";
-
 	private Page<Diary> page;
+
+	private Boolean isError;
 
 }
 
