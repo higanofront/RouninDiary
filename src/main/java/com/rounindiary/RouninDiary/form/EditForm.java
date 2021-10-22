@@ -25,10 +25,6 @@ public class EditForm {
 	String examType;
 
 	@NotBlank
-	@Length(min = 1, max = 20)
-	String createdBy;
-
-	@NotBlank
 	@Length(min = 1, max = 200)
 	String content;
 }

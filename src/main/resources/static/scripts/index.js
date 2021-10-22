@@ -71,6 +71,11 @@ class Index {
 			$('.sort-select').toggleClass('hoverd');
 			$('.sort-select-container').toggleClass('hoverd');
 		});
+
+		/*ログアウト処理*/
+		$('.logout-form').click(function(){
+			$('.logout-form').submit();
+		});
 	}
 
 	rebuildSearchResult() {
@@ -120,10 +125,8 @@ class Index {
 		let examType = $('input[name="exam_type"]').val();
 		let createdAtFrom = $('input[name="created_at-from"]').val();
 		let createdAtTo = $('input[name="created_at-to"]').val();
-		let favoliteCountFrom = $('input[name="favolite_count-from"]').val();
-		let favoliteCountTo = $('input[name="favolite_count-to"]').val();
 		let searchConds = {'keyWord': keyWord,
-						   'name': name,
+						   'createdBy': createdBy,
 						   'examType': examType,
 						   'createdAtFrom': createdAtFrom,
 						   'createdAtTo': createdAtTo

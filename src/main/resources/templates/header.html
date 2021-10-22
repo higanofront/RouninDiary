@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8" />
 </head>
@@ -11,8 +11,24 @@
         <h1 class="header-logo-title is-pc">浪人DIARY</h1>
       </div>
       <ul class="header-menu is-sp">
-        <li class="header-menu-item"><a class="header-menu-item-link" href="add" ><i class="fas fa-pen-fancy fa-3x"></i><p class="header-menu-text">日記を書く</p></a></li>
-        <li class="header-menu-item"><a class="header-menu-item-link" href="#search-section" ><i class="fas fa-search fa-3x"></i><p class="header-menu-text">日記を探す</p></a></li>
+        <li class="header-menu-item">
+        	<a class="header-menu-item-link" href="add" >
+        		<i class="fas fa-pen-fancy fa-3x"></i>
+        		<p class="header-menu-text">日記を書く</p>
+        	</a>
+        </li>
+        <li class="header-menu-item">
+        	<a class="header-menu-item-link" href="#search-section" >
+        		<i class="fas fa-search fa-3x"></i>
+        		<p class="header-menu-text">日記を探す</p>
+        	</a>
+        </li>
+        <li class="header-menu-item">
+        	<form class="header-menu-item-link logout-form" method="post" th:action="@{/logout}">
+        		<i class="fas fa-sign-out-alt fa-3x"></i>
+        		<button type="submit" class="header-menu-text logout-button">ログアウト</button>
+        	</form>
+        </li>
       </ul>
       <div class="drower-icon">
         <div class="drower-icon-bars">
@@ -33,7 +49,7 @@
             <a href="#">ユーザー管理</a>
           </div>
           <div class="drower-content-item">
-            <a href="#">ログイン</a>
+            <a href="#">ログアウト</a>
           </div>
         </div>
       </div>

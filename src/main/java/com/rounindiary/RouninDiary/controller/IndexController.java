@@ -29,7 +29,7 @@ public class IndexController {
 	 * @return index.htmlのパス
 	 */
 	@GetMapping("/")
-	public String index(
+	public String getIndex(
 			Model model,
 			@PageableDefault(page = 0, size = 5) Pageable pageable) {
 		Page<Diary> page = indexService.findAll(pageable);

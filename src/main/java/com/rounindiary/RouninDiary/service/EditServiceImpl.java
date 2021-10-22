@@ -30,7 +30,6 @@ public class EditServiceImpl implements EditService{
 		updateTarget.setTag(editForm.getTag());
 		updateTarget.setExamType(editForm.getExamType());
 		updateTarget.setContent(editForm.getContent());
-		updateTarget.setCreatedBy(editForm.getCreatedBy());
 		return updateTarget;
 	}
 
@@ -40,7 +39,6 @@ public class EditServiceImpl implements EditService{
 		editForm.setTitle(editTarget.getTitle());
 		editForm.setTag(editTarget.getTag());
 		editForm.setContent(editTarget.getContent());
-		editForm.setCreatedBy(editTarget.getCreatedBy());
 		editForm.setExamType(editTarget.getExamType());
 		return editForm;
 	}

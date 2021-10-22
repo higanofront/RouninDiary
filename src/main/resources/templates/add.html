@@ -18,7 +18,7 @@
 	        <h2 class="add-head-title">日記を書く</h2>
 	        <p class="add-head-text">「継続」したことが自信になる。</p>
 	      </div>
-	      <form action="regist" class="add-form" method="Post" th:object="${addForm}">
+	      <form th:action="@{/regist}" class="add-form" method="Post" th:object="${addForm}">
 	        <dl class="add-form-row">
 	          <dt class="add-form-label"><label for="title">タイトル</label></dt>
 	          <dd class="add-form-input">
@@ -40,13 +40,6 @@
 	          	<p th:errors="*{examType}"></p>
 	          </dd>
 	        </dl>
-	        <dl class="add-form-row">
-	          <dt class="add-form-label"><label for="created_by">投稿者</label></dt>
-	          <dd class="add-form-input">
-	          	<input type="text" id="created_by" placeholder="投稿者" name="createdBy" th:value="*{createdBy}">
-	          	<p th:errors="*{createdBy}"></p>
-          	  </dd>
-	        </dl>
 	        <div class="add-form-row">
 	          <div class="add-form-label add-form-content-label"><label for="content">本文</label></div>
 	          <div class="add-form-input">
@@ -57,6 +50,9 @@
 	        <div class="add-form-btn">
 	          <button type="submit">投稿する</button>
 	        </div>
+	        <div class="form-footer">
+				<a th:href="@{/}">戻る</a>
+		  	</div>
 	      </form>
 	    </div>
   </section>

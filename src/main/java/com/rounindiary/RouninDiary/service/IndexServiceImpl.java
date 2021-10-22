@@ -35,9 +35,9 @@ public class IndexServiceImpl implements IndexService {
 				.or(this.likeTag(searchForm.getKeyWord()))
 				.or(this.likeContent(searchForm.getKeyWord()))
 				.and(this.greaterThanCreatedAtFrom(searchForm.getCreatedAtFrom()))
+				.and(this.lessThanCreatedAtTo(searchForm.getCreatedAtTo()))
 				.and(this.likeCreatedBy(searchForm.getCreatedBy()))
-				.and(this.likeExamType(searchForm.getExamType()))
-				.and(this.lessThanCreatedAtTo(searchForm.getCreatedAtTo())),
+				.and(this.likeExamType(searchForm.getExamType())),
 				pageable);
 		diaryDto.setPage(diarys);
 		diaryDto.setSearchResults(diarys.getContent());
@@ -106,7 +106,7 @@ public class IndexServiceImpl implements IndexService {
 			if(StringUtils.isEmpty(searchCreatedBy)) {
 				return cb.conjunction();
 			}
-			return cb.equal(root.get("created_by"), searchCreatedBy);
+			return cb.equal(root.get("createdBy"), searchCreatedBy);
         };
 	}
 

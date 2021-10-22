@@ -148,6 +148,7 @@ header {
 .add-form {
   border-radius: 0 0 12px 12px;
   background: #fff;
+  padding-bottom: 40px;
 }
 
 .add-form-row {
@@ -228,6 +229,24 @@ label[for="content"] {
 .add-form-btn > button:hover {
 	background: #F18900;
 }
+
+.form-footer {
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-footer a {
+  color: #222222;
+  text-decoration: none;
+  transition: border-color 0.3s;
+}
+
+.form-footer a:hover {
+  opacity: .6;
+}
+
 
 /* =================== フッター ========================================= */
 

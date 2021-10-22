@@ -21,7 +21,6 @@ public class AddServiceImpl implements AddService {
 		diary.setTitle(addform.getTitle());
 		diary.setTag(addform.getTag());
 		diary.setContent(addform.getContent());
-		diary.setCreatedBy(addform.getCreatedBy());
 		diary.setExamType(addform.getExamType());
 
 		return diary;

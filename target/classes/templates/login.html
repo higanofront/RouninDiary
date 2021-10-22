@@ -1,0 +1,41 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/sanitize.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+	<title>ログイン</title>
+</head>
+<body>
+	<main>
+		<section class="login">
+			<h1 class="login-form-title">ログイン</h1>
+			<form method="post" th:action="@{/login}" class="login-form">
+			  <p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null"
+		        th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
+		        class="text-danger">
+		        ログインエラーメッセージ
+		      </p>
+		      <!-- ユーザーID -->
+		      <div class="form-item">
+		        <label for="userId" class="form-label"></label>
+		        <input type="text" class="form-input" placeholder="ユーザーID" name="userId" id="userId" value="higanofront@yahoo.co.jp"/>
+		      </div>
+		      <!-- パスワード -->
+		      <div class="form-item">
+		        <label for="password" class="form-label"></label>
+		        <input type="text" class="form-input" placeholder="パスワード" name="password" id="password" value="password"/>
+		      </div>
+		      <div class="button-panel">
+		      	<input type="submit" value="ログイン" class="button"/>
+		      </div>
+			</form>
+			<div class="form-footer">
+				<a th:href="@{/userRegist}">新規登録はこちら</a>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

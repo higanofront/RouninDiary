@@ -25,7 +25,7 @@
           </ul>
           <p class="article-text" th:text="${diary.content}">For an extra thick and creamy bowl, add oat bran.  It'll make for a hearty helping and also add more fiber to your meal.  If you love the taste of chai, you'll enjoy this spiced version with coriander, cinnamon, and turmeric.</p>
         </article>
-        <div class="button-wrap">
+        <div th:if="${isCreatedBy}" class="button-wrap">
           <form class="button-container" action="edit">
           	<input type="hidden" name="id" th:value="${diary.id}">
             <button>編集</button>
@@ -35,6 +35,9 @@
             <button>削除</button>
           </form>
         </div>
+        <div class="form-footer">
+			<a th:href="@{/}">戻る</a>
+	  	</div>
       </div>
     </section>
   </main>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+	<link rel="stylesheet" href="./css/sanitize.css">
+	<link rel="stylesheet" href="./css/regist.css" />
+	<title>新規登録</title>
+</head>
+<body>
+	<main>
+		<section class="login">
+			<h1 class="login-form-title">浪人DIARYをはじめよう!</h1>
+			<form method="post" th:action="@{/userRegist}" class="login-form">
+			    <!-- ユーザーID -->
+			    <div class="form-item">
+			      <label for="userId" class="form-label">ユーザーID</label>
+			      <input type="text" class="form-input" name="id"/>
+			    </div>
+			    <!-- パスワード -->
+			    <div class="form-item">
+			      <label for="password" class="form-label">パスワード</label>
+			      <input type="text" class="form-input" name="password"/>
+			    </div>
+			    <!-- ユーザー名 -->
+			    <div class="form-item">
+			      <label for="userName" class="form-label">ユーザー名</label>
+			      <input type="text" class="form-input" name="name"/>
+			    </div>
+			    <div class="button-panel">
+		      	  <input type="submit" value="新規登録" class="button"/>
+		        </div>
+		  </form>
+		  <div class="form-footer">
+				<a th:href="@{/}">戻る</a>
+		  </div>
+		</section>
+	</main>
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="./scripts/common.js"></script>
+  <script type="text/javascript">
+	new Common();
+  </script>
+</body>
+</html>

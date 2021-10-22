@@ -22,10 +22,6 @@ public class AddForm {
 
 	@NotBlank
 	@Length(min = 1, max = 20)
-	private String createdBy;
-
-	@NotBlank
-	@Length(min = 1, max = 20)
 	private String examType;
 
 }

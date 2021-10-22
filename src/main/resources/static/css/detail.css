@@ -191,6 +191,23 @@ button:hover {
 	opacity: 0.6;
 }
 
+.form-footer {
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-footer a {
+  color: #222222;
+  text-decoration: none;
+  transition: border-color 0.3s;
+}
+
+.form-footer a:hover {
+  opacity: .6;
+}
+
 
 /* =================== フッター ========================================= */
 
